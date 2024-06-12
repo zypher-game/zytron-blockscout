@@ -54,6 +54,7 @@ dump.rdb
 /docker-compose/services/logs
 /docker-compose/tmp
 
+
 .idea/
 *.iml
 
@@ -61,7 +62,7 @@ dump.rdb
 
 **.dec**
 
-*.env
+# *.env
 *.env.example
 *.env.local
 *.env.staging
