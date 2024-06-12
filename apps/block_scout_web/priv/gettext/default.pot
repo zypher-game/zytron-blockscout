@@ -78,7 +78,7 @@ msgstr ""
 
 #: lib/block_scout_web/templates/layout/_default_title.html.eex:2
 #, elixir-autogen, elixir-format
-msgid "%{subnetwork} Explorer"
+msgid "%{subnetwork} Explorer - BlockScout"
 msgstr ""
 
 #: lib/block_scout_web/views/transaction_view.ex:375
@@ -177,7 +177,7 @@ msgstr ""
 
 #: lib/block_scout_web/templates/api_docs/_metatags.html.eex:2
 #, elixir-autogen, elixir-format
-msgid "API for the %{subnetwork}"
+msgid "API for the %{subnetwork} - BlockScout"
 msgstr ""
 
 #: lib/block_scout_web/templates/account/api_key/form.html.eex:7
@@ -519,7 +519,7 @@ msgstr ""
 
 #: lib/block_scout_web/templates/chain/_metatags.html.eex:4
 #, elixir-autogen, elixir-format
-msgid "Zytron Explorer"
+msgid "BlockScout provides analytics data, API, and Smart Contract tools for the %{subnetwork}"
 msgstr ""
 
 #: lib/block_scout_web/templates/layout/_topnav.html.eex:29

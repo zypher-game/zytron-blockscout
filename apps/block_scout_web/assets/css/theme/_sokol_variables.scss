@@ -10,10 +10,7 @@ $footer-background-color: $primary;
 $footer-title-color: #fff;
 $footer-text-color: $additional-font;
 $footer-item-disc-color: $additional-font;
-
-.footer-logo {
-	filter: brightness(0) invert(1);
-}
+.footer-logo { filter: brightness(0) invert(1); }
 
 // dashboard
 $dashboard-line-color-price: $tertiary; // price left border
@@ -37,11 +34,7 @@ $dashboard-banner-network-plain-container-background-color: #0e534a; // stats bg
 
 
 // navigation
-.navbar {
-	box-shadow: 0px 0px 30px 0px rgba(21, 53, 80, 0.12);
-}
-
-// header shadow
+.navbar { box-shadow: 0px 0px 30px 0px rgba(21, 53, 80, 0.12); } // header shadow
 $dropdown-menu-item-hover-color: $sub-accent-color !default;
 $dropdown-menu-item-hover-background: rgba($sub-accent-color, .1) !default;
 $header-icon-color-hover: $sub-accent-color;
@@ -49,7 +42,7 @@ $header-icon-border-color-hover: $sub-accent-color;
 
 // Logo Size
 $footer-logo-height: 20px;
-$navbar-logo-height: 50px;
+$navbar-logo-height: 20px;
 
 // buttons
 $btn-line-bg: #fff; // button bg
@@ -62,10 +55,7 @@ $btn-contract-color: $sub-accent-color;
 $tile-body-a-color: $sub-accent-color;
 $tile-type-block-color: $sub-accent-color;
 $tile-type-progress-bar-color: $sub-accent-color;
-
-a.tile-title {
-	color: $sub-accent-color !important;
-}
+a.tile-title { color: $sub-accent-color !important; }
 
 // card
 $card-background-1: $sub-accent-color;
@@ -73,9 +63,11 @@ $card-tab-active: $sub-accent-color;
 
 .layout-container {
 	.dashboard-banner-container {
-		background-image: linear-gradient(to bottom,
-				$dashboard-banner-gradient-start,
-				$dashboard-banner-gradient-end );
+	  background-image: linear-gradient(
+	    to bottom,
+	    $dashboard-banner-gradient-start,
+	    $dashboard-banner-gradient-end
+	  );
 	}
 }
 
@@ -86,4 +78,4 @@ $badge-neutral-background-color: rgba($tertiary, .1);
 // Dark theme
 $dark-primary: #40bfb2;
 $dark-secondary: #25c9ff;
-$dark-primary-alternate: #1c9f90;
+$dark-primary-alternate: #1c9f90; 

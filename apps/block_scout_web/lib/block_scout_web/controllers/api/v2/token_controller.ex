@@ -5,7 +5,7 @@ defmodule BlockScoutWeb.API.V2.TokenController do
   alias BlockScoutWeb.API.V2.{AddressView, TransactionView}
   alias Explorer.{Chain, Repo}
   alias Explorer.Chain.{Address, BridgedToken, Token, Token.Instance}
-  alias Indexer.Fetcher.TokenTotalSupplyOnDemand
+  alias Indexer.Fetcher.OnDemand.TokenTotalSupply, as: TokenTotalSupplyOnDemand
 
   import BlockScoutWeb.Chain,
     only: [
@@ -26,6 +26,7 @@ defmodule BlockScoutWeb.API.V2.TokenController do
     ]
 
   import Explorer.MicroserviceInterfaces.BENS, only: [maybe_preload_ens: 1]
+  import Explorer.MicroserviceInterfaces.Metadata, only: [maybe_preload_metadata: 1]
 
   action_fallback(BlockScoutWeb.API.V2.FallbackController)
 
@@ -96,7 +97,7 @@ defmodule BlockScoutWeb.API.V2.TokenController do
       |> put_status(200)
       |> put_view(TransactionView)
       |> render(:token_transfers, %{
-        token_transfers: token_transfers |> maybe_preload_ens(),
+        token_transfers: token_transfers |> maybe_preload_ens() |> maybe_preload_metadata(),
         next_page_params: next_page_params
       })
     end
@@ -116,7 +117,7 @@ defmodule BlockScoutWeb.API.V2.TokenController do
       conn
       |> put_status(200)
       |> render(:token_balances, %{
-        token_balances: token_balances |> maybe_preload_ens(),
+        token_balances: token_balances |> maybe_preload_ens() |> maybe_preload_metadata(),
         next_page_params: next_page_params,
         token: token
       })
@@ -133,7 +134,7 @@ defmodule BlockScoutWeb.API.V2.TokenController do
          {:not_found, false} <- {:not_found, Chain.erc_20_token?(token)},
          {:format, {:ok, holder_address_hash}} <- {:format, Chain.string_to_address_hash(holder_address_hash_string)},
          {:ok, false} <- AccessHelper.restricted_access?(holder_address_hash_string, params) do
-      holder_address = Repo.get_by(Address, hash: holder_address_hash)
+      holder_address = %Address{Repo.get_by(Address, hash: holder_address_hash) | proxy_implementations: nil}
 
       results_plus_one =
         Instance.token_instances_by_holder_address_hash(
@@ -239,7 +240,7 @@ defmodule BlockScoutWeb.API.V2.TokenController do
       |> put_status(200)
       |> put_view(TransactionView)
       |> render(:token_transfers, %{
-        token_transfers: token_transfers |> maybe_preload_ens(),
+        token_transfers: token_transfers |> maybe_preload_ens() |> maybe_preload_metadata(),
         next_page_params: next_page_params
       })
     end
@@ -269,7 +270,7 @@ defmodule BlockScoutWeb.API.V2.TokenController do
       conn
       |> put_status(200)
       |> render(:token_balances, %{
-        token_balances: token_holders |> maybe_preload_ens(),
+        token_balances: token_holders |> maybe_preload_ens() |> maybe_preload_metadata(),
         next_page_params: next_page_params,
         token: token
       })
