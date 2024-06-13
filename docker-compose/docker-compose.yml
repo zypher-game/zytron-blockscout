@@ -30,9 +30,11 @@ services:
       context: ..
       dockerfile: ./docker/Dockerfile
       args:
+        API_V2_ENABLED: "true"
+        WEBAPP_URL: "http://54.188.14.216"
         CACHE_EXCHANGE_RATES_PERIOD: ""
+        DISABLE_WEBAPP: "false"
         API_V1_READ_METHODS_DISABLED: "true"
-        DISABLE_WEBAPP: "true"
         API_V1_WRITE_METHODS_DISABLED: "true"
         CACHE_TOTAL_GAS_USAGE_COUNTER_ENABLED: ""
         CACHE_ADDRESS_WITH_BALANCES_UPDATE_INTERVAL: ""
