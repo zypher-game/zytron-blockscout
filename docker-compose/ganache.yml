@@ -1,4 +1,4 @@
-version: '3.9'
+version: "3.9"
 
 services:
   redis-db:
@@ -29,11 +29,13 @@ services:
     links:
       - db:database
     environment:
-        ETHEREUM_JSONRPC_VARIANT: 'ganache'
-        ETHEREUM_JSONRPC_WS_URL: ws://host.docker.internal:8545/
-        INDEXER_DISABLE_INTERNAL_TRANSACTIONS_FETCHER: 'true'
-        INDEXER_DISABLE_PENDING_TRANSACTIONS_FETCHER: 'true'
-        CHAIN_ID: '1337'
+      ETHEREUM_JSONRPC_VARIANT: erigon
+      ETHEREUM_JSONRPC_HTTP_URL: http://34.217.13.183:8545
+      ETHEREUM_JSONRPC_TRACE_URL: http://34.217.13.183:8545
+      ETHEREUM_JSONRPC_WS_URL: ws://34.217.13.183:8545
+      INDEXER_DISABLE_INTERNAL_TRANSACTIONS_FETCHER: "true"
+      INDEXER_DISABLE_PENDING_TRANSACTIONS_FETCHER: "true"
+      CHAIN_ID: "80085"
 
   visualizer:
     extends:
@@ -52,8 +54,8 @@ services:
       file: ./services/frontend.yml
       service: frontend
     environment:
-      NEXT_PUBLIC_NETWORK_ID: '1337'
-      NEXT_PUBLIC_NETWORK_RPC_URL: http://host.docker.internal:8545/
+      NEXT_PUBLIC_NETWORK_ID: "80085"
+      NEXT_PUBLIC_NETWORK_RPC_URL: http://34.217.13.183:8545
 
   stats-db-init:
     extends:
