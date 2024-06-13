@@ -30,13 +30,12 @@ services:
       - db:database
     environment:
       ETHEREUM_JSONRPC_VARIANT: erigon
-      ETHEREUM_JSONRPC_HTTP_URL: http://34.217.13.183:8545
-      ETHEREUM_JSONRPC_TRACE_URL: http://34.217.13.183:8545
-      ETHEREUM_JSONRPC_WS_URL: ws://34.217.13.183:8545
+      ETHEREUM_JSONRPC_HTTP_URL: https://linea-testnet-zytron.zypher.game
+      ETHEREUM_JSONRPC_TRACE_URL: https://linea-testnet-zytron.zypher.game
+      ETHEREUM_JSONRPC_WS_URL: wss://linea-testnet-zytron.zypher.game
       INDEXER_DISABLE_INTERNAL_TRANSACTIONS_FETCHER: "true"
       INDEXER_DISABLE_PENDING_TRANSACTIONS_FETCHER: "true"
-      CHAIN_ID: "80085"
-
+      CHAIN_ID: "50098"
   visualizer:
     extends:
       file: ./services/visualizer.yml
