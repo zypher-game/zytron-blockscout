@@ -31,7 +31,6 @@ services:
       dockerfile: ./docker/Dockerfile
       args:
         API_V2_ENABLED: "true"
-        WEBAPP_URL: "http://54.188.14.216"
         CACHE_EXCHANGE_RATES_PERIOD: ""
         DISABLE_WEBAPP: "false"
         API_V1_READ_METHODS_DISABLED: "true"
@@ -44,9 +43,9 @@ services:
       - db:database
     environment:
       ETHEREUM_JSONRPC_VARIANT: erigon
-      ETHEREUM_JSONRPC_HTTP_URL: http://linea-testnet-zytron.zypher.game:8545
-      ETHEREUM_JSONRPC_TRACE_URL: http://linea-testnet-zytron.zypher.game:8545
-      ETHEREUM_JSONRPC_WS_URL: wss://linea-testnet-zytron.zypher.game:8545
+      ETHEREUM_JSONRPC_HTTP_URL: https://linea-testnet-zytron.zypher.game
+      ETHEREUM_JSONRPC_TRACE_URL: https://linea-testnet-zytron.zypher.game
+      ETHEREUM_JSONRPC_WS_URL: wss://linea-testnet-zytron.zypher.game
       INDEXER_DISABLE_INTERNAL_TRANSACTIONS_FETCHER: "true"
       INDEXER_DISABLE_PENDING_TRANSACTIONS_FETCHER: "true"
       CHAIN_ID: "50098"
